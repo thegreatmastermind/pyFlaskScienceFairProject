@@ -1,0 +1,34 @@
+{% macro heading_row(headings) %}
+<tr class="table_header">
+    {% for header in headings %}
+    <th class="table_cell">{{header}}</th>
+    {% endfor %}
+</tr>
+{% endmacro %}
+
+{% macro data_rows(data) %}
+{% for row in data %}
+<tr class="table_row">
+    {% for cell in row %}
+    <td class="table_cell">{{cell}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+{% endmacro %}
+
+{% macro display_table(headings, data) %}
+    <table class="table">
+        {{heading_row(headings)}}
+        {{data_rows(data)}}
+    </table>
+{% endmacro %}
+
+{% macro create_site_link(link, displayText) %}
+    <a href="{{url_for(link)}}">{{displayText}}</a>
+{% endmacro %}
+
+{% macro every_page_header(headerText) %}
+<div style="border-radius:4px; height: 3em; background-image: linear-gradient(195deg, #CAD2C5, #84A98C)">
+    <span class="px-2 display-6 mask opacity-6">{{headerText}}</span>
+</div>
+{%endmacro %}
